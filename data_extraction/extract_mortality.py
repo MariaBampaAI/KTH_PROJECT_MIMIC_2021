@@ -62,11 +62,11 @@ FROM icu_patients fa
 
 icu = pd.read_sql_query(query, connection)
 
-
+#until here is what we need to use
 
 ###############################################################################
 
-
+## Don't use these, from now on! i leave as they might be usefull for future use  
 query = """
 
 WITH filter_prescriptions AS
