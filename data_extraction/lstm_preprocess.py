@@ -58,26 +58,28 @@ def delete_columns(df):
     return COLUMNS
 
 
-def ZScoreNormalize(matrix):
+def normalize(X_train, X_test, X_val):
 
-    ''' Performs Z Score Normalization for 3rd order tensors 
-            matrix should be (batchsize, time_steps, features) 
-            Padded time steps should be masked with np.nan '''
+    #make sure they are double or single format
+    train = np.double(X_train)
+    val = np.double(X_val)
+    test = np.double(X_test)
+    # Compute the mean and standard deviation vector for the training data and then normalize the training, 
+    # validation and test data w.r.t.  these mean and standard deviation vectors.
+    #del X_test, X_train, X_val
+    train_mean = np.mean(train, axis=(0,1)) 
+    train_std = np.std(train, axis=(0,1))
+    #just checking the shapes
+    print("Shape should be dx1: ", train_mean.shape)
 
-    x_matrix = matrix[:,:,0:-1]
-    y_matrix = matrix[:,:,-1]
-    print(y_matrix.shape)
-    y_matrix = y_matrix.reshape(y_matrix.shape[0],y_matrix.shape[1],1)
-    means = np.nanmean(x_matrix, axis=(0,1))
-    stds = np.nanstd(x_matrix, axis=(0,1))
-    print(x_matrix.shape)
-    print(means.shape)
-    print(stds.shape)
-    x_matrix = x_matrix-means
-    print(x_matrix.shape)
-    x_matrix = x_matrix / stds
-    print(x_matrix.shape)
-    print(y_matrix.shape)
-    matrix = np.concatenate([x_matrix, y_matrix], axis=2)
-        
-    return matrix
+    train -= train_mean
+    train /= train_std 
+
+    val -= train_mean
+    val /= train_std 
+
+    test -= train_mean
+    test /= train_std 
+
+
+    return train, val, test
