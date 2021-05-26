@@ -8,19 +8,8 @@ import pickle
 import numpy as np
 import pandas as pd
 
-#from keras import backend as K
-from keras.models import Model, Input, load_model #model_from_json
-from keras.layers import Masking, Flatten, Embedding, Dense, LSTM, TimeDistributed
-from keras.callbacks import TensorBoard, ModelCheckpoint
 from keras.preprocessing.sequence import pad_sequences
-from keras import regularizers
-from keras import optimizers
 
-
-from sklearn.preprocessing import RobustScaler, MinMaxScaler
-from sklearn.metrics import confusion_matrix, accuracy_score, roc_auc_score, classification_report
-from sklearn.metrics import recall_score, precision_score
-from sklearn.model_selection import StratifiedKFold
 
 
 

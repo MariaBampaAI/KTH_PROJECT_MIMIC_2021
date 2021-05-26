@@ -156,13 +156,10 @@ diagnoses.columns = list(diagnoses.iloc[:0])
 
 
 drugs.set_index(["subject_id"], inplace=True)
-drugs.to_csv("C:\\Users\\Maria\\Desktop\\Projects Data Scripts\\MIMIC\\data\\Mortality\\mortality_drugs.csv")
+drugs.to_csv("mortality_drugs.csv")
 
 diagnoses.set_index(["subject_id"], inplace=True)
-diagnoses.to_csv("C:\\Users\\Maria\\Desktop\\Projects Data Scripts\\MIMIC\\data\\Mortality\\mortality_diagnoses.csv")
-"""
-labs.set_index(["subject_id"], inplace=True)
-labs.to_csv("C:\\Users\\Maria\\Desktop\\Projects Data Scripts\\MIMIC\\data\\Mortality\\mortality_labs.csv")
-"""
+diagnoses.to_csv("mortality_diagnoses.csv")
+
 icu.set_index(["subject_id"], inplace=True)
-icu.to_csv("C:\\Users\\Maria\\Desktop\\Projects Data Scripts\\MIMIC\\data\\Mortality\\mortality_icu.csv")
+icu.to_csv("mortality_icu.csv")
